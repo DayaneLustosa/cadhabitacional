@@ -25,8 +25,7 @@ class Models_Dependents extends Library_Model {
     $_table = $this->getTable();
     $db = $this->getDb();
     $cpf = array('.', '-');
-    $obj->cpf = str_replace($cpf, '', $obj->cpf);
-    
+    $obj->cpf = str_replace($cpf, '', $obj->cpf);    
     $obj->age = str_replace(' anos', '', $obj->age);
     $obj->renda = (!empty($obj->renda)) ? $obj->renda : 0.00;
     $handler = $db->prepare("INSERT INTO " . $_table . " 
