@@ -1,0 +1,143 @@
+<ul id="navigationMenu">
+	<li id="abrirFecharDivs">
+		<a class="home" onclick="this.className='home1'" href="#" id="abrirDivs" style="font-size: 12px; color: black;">
+			<span>Abrir/Fechar Divs</span>
+		</a>
+	</li>
+	<li id="limpar" style="font-size: 12px">
+		<a class="about" style="color: black;" href="" type="button">
+			<span onClick="limpa()">Limpar Campos</span>
+		</a>
+	</li>
+	<li id="novo" style="font-size: 12px">
+		<a class="services" href="" style="color: black;" href="cadastro">
+			<span>Nova Inscrição</span>
+		</a>
+	</li>
+	<li id="foto" style="font-size: 12px">
+		<a id="btnFoto" class="foto" href="javascript: void(0)">
+			<span>Tirar Foto</span>
+		</a>
+	</li>
+</ul>
+<?php $form = $this->view['form']; ?>
+<div align="center">
+	<h3 align="center">Cadastro de Atendidos e Requerentes de Imóveis Habitacionais</h3>
+</div>
+<?php 
+echo $form->openTag()
+?>
+<?php 
+$i = 0; foreach ($form->getFieldsets() as $fieldset): 
+?>
+<?php 
+if ($i == 2) {
+	echo '<i style="font-size: 11px;"> &nbsp; Campos marcados com</i> <i class="spanrequired" style="font-size: 15px;"> * </i>  <i style="font-size: 11px;">são de conteúdo obrigatório.</i>';
+}
+?>
+<div class="panel panel-default"
+id="<?php echo $fieldset->getName(); ?>-parent">
+
+<div class="panel-heading" style="background-color: #CECECE; border: 1px solid #b9b9b9">
+	<h4 class="panel-title">
+		<a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $fieldset->getName ();?>" class="openAll">
+			<span class="caret"></span>
+			<?php 
+			echo $fieldset->getTitle(); 
+			?>
+		</a>
+	</h4>
+</div>
+<div id="<?php echo $fieldset->getName(); ?>" class="panel-collapse collapse  <?php if ($i==0) echo "in"; ?> has-success">
+	<div class="panel-body">
+		<?php 
+		echo $fieldset->renderElements(['prepend_html' => '<div class="col-md-3 col-sm-6 col-xs-12 col-lg-3" style="height: 94px">', 'append_html' => '</div>']);
+		?>
+	</div>
+</div>
+</div>
+<?php 
+endforeach; 
+?>
+<hr />
+<!-- Botão Salvar e Cancelar  -->
+<input type="hidden" id="beforeUnload" value="1">
+<div class="btn-group col-md-5 col-sm-5 col-xs-5 col-lg-5">
+	<div align="left" class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+		<button class="btn btn-success" type="submit" id="btnSalvar" onClick="document.body.onbeforeunload='confClose(event,1);'" style="<?php if((isset($_SESSION ['user'] ['atribuicao']) ? $_SESSION ['user'] ['atribuicao'] == 4 : '') && !isset($formPesq)){ echo 'display: none;';} ?>">
+			<span class="glyphicon glyphicon-floppy-disk"></span> Salvar
+		</button>
+		<a href="cadastro" class="btn btn-default" type="reset" style="<?php if((isset($_SESSION ['user'] ['atribuicao']) ? $_SESSION ['user'] ['atribuicao'] == 4 : '') && !isset($formPesq)){ echo 'display: none;';} ?>" id="btnCancelar">
+			<span class="glyphicon glyphicon-remove"></span> Cancelar
+		</a>
+	</div>
+</div>
+<?php 
+echo $form->closeTag() 
+?>
+<?php $dependentsForm = $this->view['dependentsForm']; ?>
+<div class="modal fade has-success" id="dependentes-modal">
+	<div class="modal-dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Adicionar/Editar Composição Familiar</h4>
+				</div>
+				<div id="modal-form" data-count="0" data-action="add">
+
+					<?= $dependentsForm->openTag()?>
+					<div class="modal-body has-success">
+						<?= $dependentsForm->renderElements(['prepend_html' => '<div class="col-md-6 col-sm-6 col-xs-12 col-lg-6" >', 'append_html' => '</div>']);?>
+					</div>
+
+					<div class="modal-footer">
+						<hr />
+						<button type="submit" class="btn btn-success">Salvar</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					</div>
+					<?= $dependentsForm->closeTag()?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade has-success" id="webcam-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">
+						<img src="<?= BASE_URL?>assets/cadhabitacional/img/film.png" > Tirar Foto
+					</h4>
+				</div>
+				<div id="modal-form" data-count="0" data-action="add" >
+					<div style="float:left; background-color:white; height: 280px">
+						<div id="webcam"></div>
+						<div style="margin: 5px; height: 7px">
+							<img src="<?= BASE_URL?>assets/cadhabitacional/img/webcam.png" height="23px" style="vertical-align:text-top;"/>
+							<select id="cameraNames" size="1" onChange="changeCamera()" style="width:240px;font-size:10px;height:25px;">
+							</select>
+						</div>
+					</div>
+					<div style="float: left; background-color: white; width: 258px">
+						<button class="btn btn-small btn-success" id="btn1" style="margin: 5px;" onclick="playasound(); base64_toimage(); base64_tofield()">Tirar foto!</button>
+					</div>
+
+					<div style="float: left; background-color: white; width: 258px; height: 237px">
+						<p>
+							<img id="image" style="margin: 3px; width: 200px; height: 153px;" />
+						</p>
+						<p align="right" style="margin-right: 55px">
+							<button type="button" class="btn btn-success" data-dismiss="modal">
+								<span class="glyphicon glyphicon-paperclip"></span> Anexar Foto
+							</button>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

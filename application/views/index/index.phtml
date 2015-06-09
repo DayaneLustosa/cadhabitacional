@@ -1,0 +1,75 @@
+<?php
+$useragent = $_SERVER ['HTTP_USER_AGENT'];
+
+if (preg_match ( '|MSIE ([0-9].[0-9]{1,2})|', $useragent, $matched )) {
+	$browser_version = $matched [1];
+	$browser = 'IE';
+} elseif (preg_match ( '|Opera/([0-9].[0-9]{1,2})|', $useragent, $matched )) {
+	$browser_version = $matched [1];
+	$browser = 'Opera';
+} elseif (preg_match ( '|Firefox/([0-9\.]+)|', $useragent, $matched )) {
+	$browser_version = $matched [1];
+	$browser = 'Firefox';
+} elseif (preg_match ( '|Chrome/([0-9\.]+)|', $useragent, $matched )) {
+	$browser_version = $matched [1];
+	$browser = 'Chrome';
+} elseif (preg_match ( '|Safari/([0-9\.]+)|', $useragent, $matched )) {
+	$browser_version = $matched [1];
+	$browser = 'Safari';
+} else {
+	//Navegador não reconhecido
+	$browser_version = 0;
+	$browser = 'other';
+}
+if (preg_match ( '|Chrome/([0-9\.]+)|', $useragent, $matched ) && ($browser_version < '43.0.2357.81')) {
+	echo '<div class="row" align="center">
+	<div class="alert alert-warning"> 
+	Este sistema foi desenvolvido em compatibilidade com o Google Chrome versão <b>43.0.2357.81</b>, para melhor desempenho, recomendamos que o atualize para uma versão mais recente <a class="alert-link" href="https://www.google.com/intl/pt-BR/chrome/browser/"> clicando aqui.</a>
+	</div>
+	</div>';
+}
+if (! preg_match ( '|Chrome/([0-9\.]+)|', $useragent, $matched )) {
+	echo '<div class="row" align="center">
+	<div class="alert alert-warning"> 
+	Este sistema foi desenvolvido em compatibilidade com o Google Chrome versão <b>43.0.2357.81</b>, para melhor desempenho, recomendamos que seja instalado tal navegador <a class="alert-link" href="https://www.google.com/intl/pt-BR/chrome/browser/"> clicando aqui.</a>
+	</div>
+	</div>';
+}
+?>
+<div class="row" align="center">
+	<?php if(isset($_GET['erro'])) { echo "<div class='alert alert-danger'>Você não tem permissão para acessar esta página!</div>"; } ?>
+	<?php $form = $this->view['form']; ?>
+</div>
+<br />
+<div style="width: 29%; float: left;">
+	<img alt="" src="<?= BASE_URL ?>assets/cadhabitacional/img/brasao.gif" style="text-align:center; width: 13%; margin: 55px; position: relative; border-radius: 10px 20px; position: fixed; opacity: 0.65; -moz-opacity: 0.65; filter: alpha(opacity =   65);">
+</div>
+<div class="col-md-5" style="z-index: 1000; background-color: #EEE9E9; margin-left: 29%; border-radius: 10px 20px; box-shadow: gray 0.5em 0.5em 0.3em; border: thin solid silver;">
+	<h1 align="center">Login</h1>
+	<?= $form->openTag1()?>
+	<?php
+	$i = 0; foreach ($form->getFieldsets() as $fieldset):
+	?>
+	<div class="container-fluid">
+		<?=
+		$fieldset->renderElements(['prepend_html' => '<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">', 'append_html' => '</div>']);
+		?>
+	</div>
+	<?php
+	endforeach;
+	?>
+	<hr />
+	<input type="hidden" id="beforeUnload" value="1">
+	<div class="btn-group col-md-12 col-sm-12 col-xs-12 col-lg-12">
+		<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+			<button type="submit" onClick="document.body.onbeforeunload='confClose(event,1);'" class="btn btn-success btn-block col-md-12 col-sm-12 col-xs-12 col-lg-12">
+				<span class="glyphicon glyphicon-user"></span> Login
+			</button>
+			<a type="button" class="btn btn-default btn-block col-md-12 col-sm-12 col-xs-12 col-lg-12" href="../users/recuperaSenha">
+				<span class="glyphicon glyphicon-warning-sign"></span> Esqueci a Senha
+			</a>
+			<br /><br />
+		</div>
+	</div>
+	<?= $form->closeTag1()?>
+</div>

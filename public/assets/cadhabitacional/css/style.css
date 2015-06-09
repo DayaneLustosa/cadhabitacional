@@ -1,0 +1,335 @@
+[cc lang="css"]
+@font-face {
+font-family: 'abaddon';
+src: url('<?= BASE_URL ?>assets/cadhabitacional/css/fonts/abaddon.ttf');
+src: url(‘abaddon?#iefix’) format(‘embedded-opentype’),
+url(‘abaddon.svg#Locaweb-Icons’) format(‘svg’),
+url('<?= BASE_URL ?>assets/cadhabitacional/css/fonts/abaddon.ttf') format(‘truetype’);
+font-weight: normal;
+font-style: normal;
+}
+[/cc]
+
+.control-textarea{
+	height: 73px;
+	overflow: auto;
+}
+
+#navigationMenu li{
+    list-style:none;
+    height:39px;
+    padding:2px;
+    width:40px;
+}
+#navigationMenu span{
+    /* Container properties */
+    width:0;
+    left:38px;
+    padding:0;
+    position:absolute;
+    overflow:hidden;
+
+    /* Text properties 
+    font-family: verdana;*/
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:0.6px;
+    white-space:nowrap;
+    line-height:39px;
+
+    /* CSS3 Transition: */
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    transition: 0.25s;
+}
+
+#navigationMenu a{
+    display:block;
+    position:relative;
+}
+
+#navigationMenu a:hover span{ width:auto; padding:0 20px;overflow:visible; }
+#navigationMenu a:hover{
+    -moz-box-shadow:0 0 5px silver;
+    -webkit-box-shadow:0 0 5px silver;
+    box-shadow:0 0 5px silver;
+}
+/* limpar divs */
+#navigationMenu .foto {	background-image: url("../img/add-photo.png"); background-repeat: no-repeat; background-position: center; width:30px; height:30px;}
+#navigationMenu .foto:hover {	background-image: url("../img/add-photo.png"); background-repeat: no-repeat; background-position: center; width:38px; height:39px;}
+#navigationMenu .foto span{
+  background: -moz-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%, rgba(246, 242, 242, 0.95) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232, 227, 227, 0.95)), color-stop(100%,rgba(246, 242, 242, 0.95))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(232, 227, 227, 0.95)', endColorstr='rgba(246, 242, 242, 0.95)',GradientType=0 ); /* IE6-9 */
+}
+
+#navigationMenu .home {	background-image: url("../img/fechado.png"); background-repeat: no-repeat; background-position: center; width:30px; height:30px;}
+#navigationMenu .home:hover {	background-image: url("../img/fechado.png"); background-repeat: no-repeat; background-position: center; width:38px; height:39px;}
+#navigationMenu .home span{
+  background: -moz-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%, rgba(246, 242, 242, 0.95) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232, 227, 227, 0.95)), color-stop(100%,rgba(246, 242, 242, 0.95))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(232, 227, 227, 0.95)', endColorstr='rgba(246, 242, 242, 0.95)',GradientType=0 ); /* IE6-9 */
+}
+
+#navigationMenu .home1 {	background-image: url("../img/aberto.png"); background-repeat: no-repeat; background-position: center; width:30px; height:30px;}
+#navigationMenu .home1:hover {	background-image: url("../img/aberto.png"); background-repeat: no-repeat; background-position: center; width:38px; height:39px;}
+#navigationMenu .home1 span{
+  background: -moz-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%, rgba(246, 242, 242, 0.95) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232, 227, 227, 0.95)), color-stop(100%,rgba(246, 242, 242, 0.95))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(232, 227, 227, 0.95)', endColorstr='rgba(246, 242, 242, 0.95)',GradientType=0 ); /* IE6-9 */
+}
+
+#navigationMenu .about { background-image: url("../img/limpar.png"); background-repeat: no-repeat; background-position: center; width:30px; height:30px;}
+#navigationMenu .about:hover { background-image: url("../img/limpar.png"); background-repeat: no-repeat; background-position: center; width:38px; height:39px;}
+#navigationMenu .about span{
+  background: -moz-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%, rgba(246, 242, 242, 0.95) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232, 227, 227, 0.95)), color-stop(100%,rgba(246, 242, 242, 0.95))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(232, 227, 227, 0.95)', endColorstr='rgba(246, 242, 242, 0.95)',GradientType=0 ); /* IE6-9 */
+}
+
+#navigationMenu .services { background-image: url("../img/edit1.png"); background-repeat: no-repeat; background-position: center; width:30px; height:30px;}
+#navigationMenu .services:hover { background-image: url("../img/edit1.png"); background-repeat: no-repeat; background-position: center; width:38px; height:39px;}
+#navigationMenu .services span{
+  background: -moz-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%, rgba(246, 242, 242, 0.95) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232, 227, 227, 0.95)), color-stop(100%,rgba(246, 242, 242, 0.95))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(232, 227, 227, 0.95) 0%,rgba(246, 242, 242, 0.95) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(232, 227, 227, 0.95)', endColorstr='rgba(246, 242, 242, 0.95)',GradientType=0 ); /* IE6-9 */
+}
+
+.linha {
+	border-bottom: 1px dotted silver;
+	margin-left: 20px;
+	margin-bottom: 7px;
+	padding-bottom: 0px;
+}
+
+td.nome {
+	font-size: 23px;
+	font-style: oblique;
+	text-align: center;
+	border: 0;
+	vertical-align: bottom;
+}
+
+td.linha1 {
+	font-size: 11px;
+	font-style: oblique;
+	text-align: center;
+	border: 0;
+	vertical-align: center;
+}
+td.linha2 {
+	font-size: 10px;
+	font-style: oblique;
+	text-align: center;
+	border: 0;
+	vertical-align: center;
+}
+
+td.linha1value {
+	font-size: 11px;
+	font-style: oblique;
+	font-weight: bold;
+	text-align: center;
+	border: 0;
+	vertical-align: center;
+}
+td.linha2value {
+	font-size: 10px;
+	font-style: oblique;
+	font-weight: bold;
+	text-align: center;
+	border: 0;
+	vertical-align: center;
+}
+
+td.nome1 {
+	font-size: 15;
+	font-style: oblique;
+	text-align: center;
+	border: 0;
+	vertical-align: center;
+}
+
+td.aviso {
+	font-family: times new roman;
+	font-size: 11px;
+	font-style: oblique;
+	text-align: center;
+	border: 1px solid #000000;
+	vertical-align: center;
+}
+
+td.ide {
+	font-size: 14px;
+	font-style: oblique;
+	font-weight: bold;
+	text-align: center;
+	border: 0;
+	vertical-align: center;
+}
+
+td.ide1 {
+	font-size: 12px;
+	text-align: center;
+	border: 0;
+	vertical-align: bottom;
+}
+
+p.title {
+	font-size: 10px;
+	font-weight: bold;
+	border: 0;
+	vertical-align: bottom;
+	text-align: right;
+	padding-left: 15px;
+	vertical-align: bottom;
+	font-family: verdana;
+}
+td.title1 {
+	font-size: 9px;
+	font-weight: bold;
+	border: 0;
+	vertical-align: bottom;
+	text-align: right;
+	padding-left: 15px;
+	vertical-align: bottom;
+	font-family: verdana;
+}
+
+p.value {
+	font-family: verdana;
+	font-size: 10px;
+	border-bottom: 1px dotted silver;
+	padding-left: 20px;
+	vertical-align: bottom;
+	text-align: left;
+}
+td.value1 {
+	font-family: verdana;
+	font-size: 9px;
+	border-bottom: 1px dotted silver;
+	padding-left: 20px;
+	vertical-align: bottom;
+	text-align: left;
+}
+
+td.ass {
+	font-family: times new roman;
+	font-size: 10px;
+	border-top: 1px solid black;
+	padding-left: 150px;
+	vertical-align: bottom;
+	text-align: left;
+}
+div.rodape-div {
+	background-color: rgba(000, 000, 000, 0.7);
+	color: white;
+	position: fixed;
+	bottom: 0;
+	z-index: 30000;
+	width: 100%;
+	height: 4%;
+}
+div.container-form {
+	float: right;
+	width: 50%;
+}
+div.elemento {
+	width: 30%;
+}
+div.cor {
+	color: green;
+}
+div.container-bemvindo {
+	float: left;
+	width: 50%;
+	height: 50%;
+	text-align: justify;
+}
+div.container-dados {
+	float: left;
+	width: 40%;
+}
+h2 {
+	color: green;
+}
+h3 {
+	/*font-family: Sergoe Ul;*/
+	text-align: center;
+}
+a {
+	color: green;
+	font-style: bold;
+}
+#foto {
+	position: fixed;
+	top: 172px;
+	left: 4px;
+	z-index: 1000;
+}
+#foto2 {
+	position: fixed;
+	top: 220px;
+	left: 4px;
+	z-index: 1000;
+	width: 32px;	
+}
+#abrirFecharDivs {
+	position: fixed;
+	top: 63px;
+	left: 4px;
+	z-index: 1000;
+}
+#limpar {
+	position: fixed;
+	top: 135px;
+	left: 4px;
+	z-index: 1000;
+}
+#novo {
+	position: fixed;
+	top: 99px;
+	left: 4px;
+	z-index: 1000;
+}
+#warningPesq {
+	position: fixed;
+	top: 63px;
+	width: 87%;
+	z-index: 100001;
+}
+#erroPesq {
+	position: fixed;
+	top: 63px;
+	z-index: 55551;
+	width: 87%;
+}
+.panel-group .panel{
+	overflow: visible !important;
+}
+.spanrequired{
+	color: #A31919;
+	font-size: 18px;
+	text-align: center;
+	vertical-align: middle;
+}

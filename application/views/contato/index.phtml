@@ -1,0 +1,147 @@
+<div class="container" style="border-radius: 10px 20px; box-shadow: gray 0.5em 0.5em 0.3em; border: thin solid silver;">
+	<div class="container container-dados" >
+		<p>
+
+			<h3> Secretaria Municipal de Habitação</h3>
+			<br /> <h4 align="center"><b> Secretário: </b> Flávio Alexandre </h4><br />
+			<p>
+				<br />
+				<b>Rua:</b> Brigadeiro Rocha, nº 2777
+			</p>
+			<br />
+			<p>
+				<b>Bairro: </b>Centro
+			</p>
+			<br />
+			<p>
+				<b>CEP: </b> 85010-210
+			</p>
+			<br />
+			<p>
+				<span class="glyphicon glyphicon-phone-alt"></span><b> Tel: </b>(42) 3621-3081
+			</p>
+			<br />
+			<p>
+				<b>Guarapuava – Paraná. </b>
+			</p>
+
+			<BR /> <BR />
+			</div>
+			<?php
+			if($_SERVER ['REQUEST_METHOD'] === 'POST'){
+// Inclui o arquivo class.phpmailer.php localizado na pasta phpmailer
+				require("phpmailer/class.phpmailer.php");
+
+// Inicia a classe PHPMailer
+				$mail = new PHPMailer();
+
+// Define os dados do servidor e tipo de conexão
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+$mail->IsSMTP(); // Define que a mensagem será SMTP
+$mail->Host = "smtp.mandrillapp.com"; // Endereço do servidor SMTP
+$mail->SMTPAuth = true; // Usa autenticação SMTP? (opcional)
+$mail->Port = "587";
+$mail->Username = 'dayane_lustosa@hotmail.com'; // Usuário do servidor SMTP
+$mail->Password = 'bfCn_J98hKIaU9V26neZPQ'; // Senha do servidor SMTP
+
+// Define o remetente
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+$mail->From = $_POST['email']; // Seu e-mail
+$mail->FromName = $_POST['name']; // Seu nome
+
+// Define os destinatário(s)
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+$mail->AddAddress('dayane_lustosa@hotmail.com', 'Dayane Lustosa');
+//$mail->AddAddress('ciclano@site.net');
+//$mail->AddCC('ciclano@site.net', 'Ciclano'); // Copia
+//$mail->AddBCC('fulano@dominio.com.br', 'Fulano da Silva'); // Cópia Oculta
+
+// Define os dados técnicos da Mensagem
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+$mail->IsHTML(true); // Define que o e-mail será enviado como HTML
+//$mail->CharSet = 'iso-8859-1'; // Charset da mensagem (opcional)
+
+// Define a mensagem (Texto e Assunto)
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+$mail->Subject  = $_POST['assunto']; // Assunto da mensagem
+$mail->Body = $_POST['mensagem'];
+$mail->AltBody = strip_tags($_POST['mensagem']);
+
+// Define os anexos (opcional)
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+//$mail->AddAttachment("c:/temp/documento.pdf", "novo_nome.pdf");  // Insere um anexo
+
+// Envia o e-mail
+$enviado = $mail->Send();
+
+// Limpa os destinatários e os anexos
+$mail->ClearAllRecipients();
+$mail->ClearAttachments();
+
+// Exibe uma mensagem de resultado
+if ($enviado) {
+	echo "<div class='alert alert-success' id='enviado' style=' z-index: 1001;  position: fixed; width: 85%;'>
+	<a class='close' data-dismiss='alert' href='#'><span
+	class='glyphicon glyphicon-remove'></span></a><h4 align='center'> E-mail enviado com sucesso!</h4>
+	</div>";
+
+} else {
+	echo "<div class='alert alert-warning' id='enviado' style=' z-index: 1001;  position: fixed; width: 85%;'>
+	<a class='close' data-dismiss='alert' href='#'><span
+	class='glyphicon glyphicon-remove'></span></a><h4 align='center'> Não foi possível enviar o e-mail.</h4>
+	</div>";
+	echo "<div class='alert alert-warning' id='enviado' style=' z-index: 1001;  position: fixed; width: 85%;'>
+	<a class='close' data-dismiss='alert' href='#'><span
+	class='glyphicon glyphicon-remove'></span></a><h4 align='center'> . $mail->ErrorInfo; .</h4>
+	</div>";
+}
+}
+
+?>
+<form id="form" action="contato" method="post">
+	<div class="container container-form has-success" style="border-left: thin solid silver;">
+		<h3>Enviar uma mensagem</h3>
+
+		<div class="form-group col-md-12">
+			<label class="control-label  col-md-6" for="name">Nome</label>
+
+			<input class="form-control" id="name" type="text" name="name" placeholder="Digite seu nome"
+			required="required" autofocus="autofocus">
+
+		</div>
+
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-6" for="email">Email</label>
+
+			<input class="form-control" id="email" type="email" name="email" placeholder="email@exemplo.com"
+			required="required">
+		</div>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-12" for="email">Assunto</label>
+
+			<input class="form-control" id="assunto" type="text" name="assunto" placeholder="assunto"
+			required="required">
+
+		</div>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-12" for="mensagem">Mensagem</label>
+
+			<textarea class="form-control" name="mensagem" id="mensagem"
+			placeholder="Digite aqui sua mensagem" required="required"></textarea>
+
+		</div>
+		<input type="hidden" id="beforeUnload" value="1">
+		<div align="right" style="margin-right: 17px">
+			<button class="btn btn-success" type="submit" id="btn-eviar" onClick="document.body.onbeforeunload='confClose(event,1);'">
+				<span class="glyphicon glyphicon-envelope"></span> 
+				Enviar
+			</button>
+			<button class="btn btn-default" type="reset" id="btn-cancelar">
+				<span class="glyphicon glyphicon-remove"></span> 
+				Cancelar
+			</button>
+		</div>
+		<br />
+	</div>
+</form>
+</div>

@@ -1,0 +1,43 @@
+<?php $form = $this->view['form']; ?>
+<div align="center">
+	<h3 align="center">Cadastro de Usuários</h3>
+</div>
+<div class="container-fluid" style="margin-left: 15%;">
+	<?php
+	echo $form->openTag();
+	?>
+	<?php
+	foreach ($form->getFieldsets() as $fieldset):
+		?>
+	<div class="container-fluid">
+		<div class="col-md-12">
+			<?php
+			echo $fieldset->renderElements(['prepend_html' => '<div class="col-md-5 col-sm-5 col-xs-5 col-lg-5">', 'append_html' => '</div>']);
+			?>
+		</div>
+	</div>
+	<?php
+	endforeach;
+	?>
+	<?php
+	echo $form->renderElements();
+	?>
+	<div class="container-fluid btn-group col-md-12" style="margin-left: 2%;">
+
+		<input type="hidden" id="beforeUnload" value="1">
+		<div class="container-fluid">
+			<hr />
+			<button class="btn btn-success" type="submit">
+				<span class="glyphicon glyphicon-user"></span> Salvar
+			</button>
+			<button class="btn btn-default" type="reset">
+				<span class="glyphicon glyphicon-remove"></span> Cancelar
+			</button>
+		</div>
+	</div>
+	<br />
+	<br />
+	<?php
+	echo $form->closeTag();
+	?>
+</div>
