@@ -1193,7 +1193,7 @@ class Forms_Requerentes extends Library_Form_Form {
 			]
 			] ) );
 
-		/*if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
+		/*if($_SERVER ['REQUEST_METHOD'] == 'POST') {
 			$cidades = Database::findAll("SELECT * FROM tb_cidades", []);
 			$cidadesOptions[] = "Selecione...";
 			foreach ($cidades as $cidade):
