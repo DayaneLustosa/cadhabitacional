@@ -9,5 +9,9 @@
 		{
 			
 		}
+		function ContempladosAction()
+		{
+			
+		}		
 	}
 	?>

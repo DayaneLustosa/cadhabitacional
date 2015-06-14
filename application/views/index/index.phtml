@@ -21,7 +21,7 @@ if (preg_match ( '|MSIE ([0-9].[0-9]{1,2})|', $useragent, $matched )) {
 	$browser_version = 0;
 	$browser = 'other';
 }
-if (preg_match ( '|Chrome/([0-9\.]+)|', $useragent, $matched ) && ($browser_version < '43.0.2357.81')) {
+if (preg_match ( '|Chrome/([0-9\.]+)|', $useragent, $matched ) && ($browser_version < '43.0.2357.124')) {
 	echo '<div class="row" align="center">
 	<div class="alert alert-warning"> 
 	Este sistema foi desenvolvido em compatibilidade com o Google Chrome versão <b>43.0.2357.81</b>, para melhor desempenho, recomendamos que o atualize para uma versão mais recente <a class="alert-link" href="https://www.google.com/intl/pt-BR/chrome/browser/"> clicando aqui.</a>

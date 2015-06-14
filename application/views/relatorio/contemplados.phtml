@@ -1,7 +1,15 @@
 <?php
-$pesquisa = Database::findAll ( "SELECT hId, holderName, holderCpf, dtCadastro, atendido FROM pesquisa where atendido = 1 order by dtCadastro, holderName, holderCpf desc" );
+function pesquisa(){
+$modelPesquisa = new Model_Pesquisa;
+$pesquisa = $modelPesquisa->FetchAll("(SELECT hId, holderName, holderCpf, dtCadastro, atendido FROM pesquisa where atendido = 1 order by dtCadastro, holderName, holderCpf desc limit 10 )");
+$count = $modelPesquisa->FetchAll("Select hId FROM pesquisa where atendido = 1");
+$count = count ( $count );
+print_r($pesquisa);
+}
+/*$pesquisa = Database::findAll ( "SELECT hId, holderName, holderCpf, dtCadastro, atendido FROM pesquisa where atendido = 1 order by dtCadastro, holderName, holderCpf desc" );
 $count = Database::findAll ( "Select hId FROM pesquisa where atendido = 1" );
 $count = count ( $count );
+*/
 ?>
 <style media="print">
 .botao {
@@ -10,41 +18,43 @@ $count = count ( $count );
 </style>
 
 <div align="right"
-	style="position: fixed; top: 150px; right: 4px; z-index: 1000;">
-	<button id="btnPrintCont" type="button" class="btn btn-default botao"
-		onclick="javascript:window.print();">
-		<span class="glyphicon glyphicon-print"></span> Imprimir
-	</button>
+style="position: fixed; top: 150px; right: 4px; z-index: 1000;">
+<button id="btnPrintCont" type="button" class="btn btn-default botao"
+onclick="javascript:window.print();">
+<span class="glyphicon glyphicon-print"></span> Imprimir
+</button>
 </div>
 
 <?php
-$formatfields = new FormatFields ();
+$formatfields = new Library_Form_FormatFields ();
 $tbPesq = null;
 foreach ( $pesquisa as $pesq ) :
 	$tbPesq .= '<tr id="tbody-relatorio">
-					<td> ' . strtoupper ( $pesq ['hId'] ) . ' </td>
-					<td>' . $pesq ['holderName'] . '</td>
-					<td>' . $formatfields->formatar ( $pesq ['holderCpf'], 'cpf') . '</td>
-					<td>' . $pesq ['dtCadastro'] . '</td>
-				<tr>';
+<td> ' . strtoupper($pesq ['hId']) . ' </td>
+<td>' . $pesq ['holderName'] . '</td>
+<td>' . $formatfields->formatar ( $pesq ['holderCpf'], 'cpf') . '</td>
+<td>' . $pesq ['dtCadastro'] . '</td>
+<tr>';
 endforeach
 ;
 $tbPesquisa = '
 <div class="container">
-	<h2 align="center"><img src="../img/family.png" style="width: 60px"> Relatório de Contemplados </h2>
-	<h3 align="center"> Foram encontrados ' . $count . ' registros de Contemplados</h3>
+<h2 align="center"><img src="'.BASE_URL.'assets/cadhabitacional/img/family.png" style="width: 60px"> Relatório de Contemplados </h2>
+<h3 align="center"> Foram encontrados ' . $count . ' registros de Contemplados</h3>
+<div class="table-responsive">
 <table class="table table-hover">
-	<thead>
-		<tr>
-			<th>Nº Inscrição</th>
-			<th>Nome</th>
-			<th>CPF</th>
-			<th>Data Cadastro</th>
-		</tr>
-	</thead>
-	<tbody id="tbody-relatorio">
-		' . $tbPesq . '	
-	</tbody>
+<thead>
+<tr>
+<th>Nº Inscrição</th>
+<th>Nome</th>
+<th>CPF</th>
+<th>Data Cadastro</th>
+</tr>
+</thead>
+<tbody id="tbody-relatorio">
+' . $tbPesq . '
+</tbody>
 </table>
+</div>
 </div>'?>
 <?php echo $tbPesquisa; ?>

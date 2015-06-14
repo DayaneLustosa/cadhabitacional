@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>	
+<head>
 	<meta charset="utf-8">
 	<title>Cadastro Habitacional</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="CadHabit Guarapuava">
+	<meta name="author" content="Dayane Lustosa">
 
 	<link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL ?>assets/cadhabitacional/img/brasao.gif" />
 	<link href="<?= BASE_URL ?>assets/lightbox/css/lightbox.css" rel="stylesheet" />
@@ -22,7 +24,7 @@
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
-					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand cor" href="cadastro">
@@ -31,7 +33,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav active">
-					<?php 
+					<?php
 					if (isset ( $_SESSION ['user'] ) && ($_SESSION['user']['atribuicao'] != 5)) { ?>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle"	data-toggle="dropdown">Cadastro
@@ -43,12 +45,12 @@
 							<li>
 								<a href="cadastro">Novo Requerente</a>
 							</li>
-							<?php 
+							<?php
 						} else if (isset ( $_SESSION ['user'] ) && (($_SESSION ['user'] ['atribuicao'] == 3) || ($_SESSION ['user'] ['atribuicao'] == 4))) { ?>
 						<li>
 							<a href="cadastro">Nova Pesquisa</a>
 						</li>
-						<?php 
+						<?php
 					}?>
 
 					<?php
@@ -56,7 +58,7 @@
 					<li>
 						<a href="cadastrousuario"> Cadastrar Usuário </a>
 					</li>
-					<?php 
+					<?php
 				} else {
 					echo '';
 				}?>
@@ -65,7 +67,7 @@
 				<li>
 					<a href="editausuario"> Editar Usuários </a>
 				</li>
-				<?php 
+				<?php
 			} else {
 				echo '';
 			}?>
@@ -88,7 +90,7 @@
 				<li>
 					<a href="relatorio/contemplados">Relatório de Contemplados</a>
 				</li>
-				<?php } 
+				<?php }
 			} ?>
 		</ul>
 	</li>
@@ -99,7 +101,7 @@
 	</li>
 </ul>
 
-<?php 
+<?php
 if(isset($_SESSION['user'])) { ?>
 <ul class="nav navbar-nav navbar-right">
 	<li class="dropdown">
@@ -109,7 +111,7 @@ if(isset($_SESSION['user'])) { ?>
 				class="glyphicon glyphicon-cog"></span>' . " Olá, " . utf8_encode ( $_SESSION ['user'] ['name'] ) . '<b class="caret"></b>';
 			} else {
 				echo '';
-			} ?> 
+			} ?>
 		</a>
 		<ul class="dropdown-menu" style="z-index: 20000">
 			<li>
@@ -117,28 +119,28 @@ if(isset($_SESSION['user'])) { ?>
 			</li>
 			<li class="divider"></li>
 			<li>
-				<a href="login"> 
-					<?php if(isset($_SESSION['user'])) { 
-						echo 'Sair'; 
+				<a href="login">
+					<?php if(isset($_SESSION['user'])) {
+						echo 'Sair';
 					} else { echo '';}?>
 				</a>
 			</li>
 		</ul>
 	</li>
 </ul>
-<?php 
+<?php
 } else { ?>
 <ul class="nav navbar-nav navbar-right">
 	<li>
 		<a href="login">
-			<span class="glyphicon glyphicon-user"></span> 
-			<?php 
-			if(isset($_SESSION['user'])) { 
+			<span class="glyphicon glyphicon-user"></span>
+			<?php
+			if(isset($_SESSION['user'])) {
 				echo 'Sair';
-			} else { 
-				?> 
-				Login 
-				<?php 
+			} else {
+				?>
+				Login
+				<?php
 			} ?>
 		</a>
 	</li>
@@ -146,13 +148,13 @@ if(isset($_SESSION['user'])) { ?>
 <?php } ?>
 </div>
 </nav>
-<?php 
+<?php
 $messages = new Library_FlashMessages();
 $messages->getMessage();
 ?>
 
-<?php 
-echo $this->content; 
+<?php
+echo $this->content;
 ?>
 </div>
 <hr />
